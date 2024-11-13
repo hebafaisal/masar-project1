@@ -1,27 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Module } from '@nestjs/common';
-import { UserController } from './user.controller';
-import { UserService } from './user.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
-
-const entitiesPath = __dirname + '/**/*.entity{.ts,.js}';
+import { UserService } from './user.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306, 
-      username: 'root',
-      password: '',
-      database: 'masart_db',
-      entities: [entitiesPath],
-      synchronize: true,
-      logging: false,
-
-    }),
-  ],
-  controllers: [UserController],
+  controllers: [],
   providers: [UserService],
+  exports: [UserService],
 })
-export class AppModule {}
+export class UserModule {}
